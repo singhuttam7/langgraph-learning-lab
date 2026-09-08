@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="College AI Assistant - Intelligent academic and student support system"
+    />
+
+    <title>College AI | Student Assistant</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Background Effects -->
+    <div class="background">
+      <div class="aurora aurora-one"></div>
+      <div class="aurora aurora-two"></div>
+      <div class="grid-background"></div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-top">
+        <!-- Brand -->
+        <div class="brand">
+          <div class="brand-icon">
+            <i class="fa-solid fa-sparkles"></i>
+          </div>
+
+          <div class="brand-text">
+            <h2>College AI</h2>
+            <span>Student Assistant</span>
+          </div>
+        </div>
+
+        <!-- New Chat -->
+        <button id="newChat" class="new-chat">
+          <i class="fa-solid fa-plus"></i>
+          <span>New Conversation</span>
+        </button>
+
+        <!-- Programme -->
+        <div class="sidebar-section">
+          <div class="section-title">
+            <span>PROGRAMME</span>
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+
+          <div class="programme-list">
+            <button class="programme-btn active" data-programme="BCA">
+              <span class="programme-icon">
+                <i class="fa-solid fa-code"></i>
+              </span>
+
+              <span class="programme-info">
+                <strong>BCA</strong>
+                <small>Computer Applications</small>
+              </span>
+
+              <i class="fa-solid fa-check check-icon"></i>
+            </button>
+
+            <button class="programme-btn" data-programme="BBA">
+              <span class="programme-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </span>
+
+              <span class="programme-info">
+                <strong>BBA</strong>
+                <small>Business Administration</small>
+              </span>
+
+              <i class="fa-solid fa-check check-icon"></i>
+            </button>
+
+            <button class="programme-btn" data-programme="B.Com">
+              <span class="programme-icon">
+                <i class="fa-solid fa-coins"></i>
+              </span>
+
+              <span class="programme-info">
+                <strong>B.Com</strong>
+                <small>Commerce</small>
+              </span>
+
+              <i class="fa-solid fa-check check-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Access -->
+        <div class="sidebar-section">
+          <div class="section-title">
+            <span>QUICK ACCESS</span>
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+
+          <button
+            class="quick-link"
+            data-question="What are the academic rules and requirements?"
+          >
+            <span class="quick-icon academic">
+              <i class="fa-solid fa-book-open"></i>
+            </span>
+            <span>Academic Information</span>
+          </button>
+
+          <button
+            class="quick-link"
+            data-question="What are the fee structure and payment details?"
+          >
+            <span class="quick-icon fees">
+              <i class="fa-solid fa-wallet"></i>
+            </span>
+            <span>Fee Information</span>
+          </button>
+
+          <button class="quick-link" data-question="What can you help me with?">
+            <span class="quick-icon general">
+              <i class="fa-solid fa-compass"></i>
+            </span>
+            <span>General Help</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= DEVELOPER ================= -->
+
+      <div class="sidebar-bottom">
+        <div class="system-status">
+          <span class="status-dot"></span>
+
+          <div>
+            <strong>AI System Online</strong>
+            <small>FastAPI + LangGraph</small>
+          </div>
+        </div>
+
+        <div class="developer-card">
+          <div class="developer-avatar">US</div>
+
+          <div class="developer-info">
+            <span>Developed by</span>
+            <strong>Uttam Singh</strong>
+          </div>
+
+          <div class="developer-badge">
+            <i class="fa-solid fa-code"></i>
+          </div>
+        </div>
+
+        <div class="copyright">© 2026 Uttam Singh</div>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <button
+            id="menuBtn"
+            class="menu-btn"
+            aria-label="Open navigation"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="header-title">
+            <div class="title-icon">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <div>
+              <h1>College AI Assistant</h1>
+              <span> Your intelligent academic companion </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="connection-status">
+            <span class="status-dot"></span>
+            <span>Online</span>
+          </div>
+
+          <div id="programmeBadge" class="programme-badge">BCA</div>
+        </div>
+      </header>
+
+      <!-- ================= CHAT ================= -->
+
+      <section id="chatArea" class="chat-area">
+        <!-- Welcome -->
+        <div id="welcome" class="welcome">
+          <div class="welcome-orbit">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+
+            <div class="welcome-icon">
+              <i class="fa-solid fa-sparkles"></i>
+            </div>
+          </div>
+
+          <div class="welcome-text">
+            <span class="welcome-label">
+              <span class="mini-dot"></span>
+              AI-POWERED STUDENT SUPPORT
+            </span>
+
+            <h2>Hello, <span>Student.</span></h2>
+
+            <p>
+              Ask me anything about your academic information, fees, college
+              policies, or general student queries.
+            </p>
+          </div>
+
+          <!-- Quick Questions -->
+
+          <div class="question-grid">
+            <button
+              class="question-card"
+              data-question="What are the academic rules and requirements?"
+            >
+              <div class="question-icon purple">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+
+              <div>
+                <strong>Academic</strong>
+                <span>Rules & requirements</span>
+              </div>
+
+              <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+            </button>
+
+            <button
+              class="question-card"
+              data-question="What is the fee structure?"
+            >
+              <div class="question-icon blue">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+
+              <div>
+                <strong>Fees</strong>
+                <span>Payment & structure</span>
+              </div>
+
+              <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+            </button>
+
+            <button
+              class="question-card"
+              data-question="What can you help me with?"
+            >
+              <div class="question-icon green">
+                <i class="fa-solid fa-compass"></i>
+              </div>
+
+              <div>
+                <strong>General Help</strong>
+                <span>Explore assistant</span>
+              </div>
+
+              <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+            </button>
+          </div>
+
+          <div class="welcome-footer">
+            <i class="fa-solid fa-shield-halved"></i>
+            Answers are generated using your college knowledge base
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= INPUT ================= -->
+
+      <div class="input-container">
+        <div class="input-wrapper">
+          <textarea
+            id="messageInput"
+            rows="1"
+            placeholder="Ask your college assistant anything..."
+            aria-label="Message"
+          ></textarea>
+
+          <button id="sendBtn" class="send-btn" aria-label="Send message">
+            <i class="fa-solid fa-arrow-up"></i>
+          </button>
+        </div>
+
+        <div class="input-info">
+          <span>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            AI Assistant
+          </span>
+
+          <span> Enter to send · Shift + Enter for new line </span>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
